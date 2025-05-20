@@ -1,43 +1,60 @@
-# Minecraft Spieler-Effektanzeige mit MQTT und Node-RED
+# Minecraft Spieler-Effektanzeige mit Node-RED & MQTT
 
 [GitHub Repository](https://github.com/dein-benutzername/dein-projekt)
 
-## Was ist dieses Projekt?
+## 🧩 Was ist dieses Projekt?
 
-Dieses Projekt ist ein Node-RED basiertes Dashboard-System zur Anzeige von Minecraft-Spieler-Effekten. Es verbindet sich per RCON mit einem Minecraft-Server, ruft die Effekte aktiver Spieler ab und visualisiert diese über MQTT-LED-Steuerung und ein UI-Dashboard. Spieler können im Dashboard ausgewählt werden, um deren aktuelle Effekte farblich angezeigt zu bekommen.
+Dieses Projekt zeigt die aktiven **Status-Effekte von Minecraft-Spielern** in Echtzeit über ein Dashboard an. Die Daten werden per RCON vom Minecraft-Server abgefragt und über MQTT farblich auf RGB-LEDs visualisiert. Ideal für Visualisierung in Echtzeit auf Displays oder LED-Leisten.
 
-## Wie wird dieses Projekt installiert?
+## 🛠️ Installation
 
-1. Node-RED installieren (https://nodered.org/docs/getting-started/)
-2. Das Repository klonen oder die Flow-JSON in Node-RED importieren
-3. Die Konfiguration des Minecraft-Servers im `serverconfig`-Node anpassen (Host, Port, Passwort)
-4. MQTT-Broker konfigurieren (Adresse, Port, ggf. Authentifizierung)
-5. Node-RED starten und auf das Dashboard zugreifen
+1. Installiere [Node-RED](https://nodered.org/docs/getting-started/)
+2. Importiere den bereitgestellten Flow in Node-RED
+3. Passe die folgenden Dinge in den Nodes an:
+   - **Minecraft-Serverkonfiguration** (`serverconfig` Node): Host, Port, Passwort
+   - **MQTT-Broker** (z. B. `tome.lu`): Adresse und Port
+4. Stelle sicher, dass dein Minecraft-Server RCON aktiviert hat
+5. Öffne das Node-RED Dashboard im Browser (Standard: `http://localhost:1880/ui`)
 
-## Wie funktioniert es?
+## ⚙️ Wie funktioniert es?
 
-- Der Flow ruft alle 10 Sekunden die Spielerliste vom Minecraft-Server ab und aktualisiert das Auswahlmenü im Dashboard.
-- Ein Spieler kann aus dem Dropdown ausgewählt und die Auswahl per Button bestätigt werden.
-- Ein Timer fragt alle 5 Sekunden die aktiven Effekte des ausgewählten Spielers ab.
-- Die Effekte werden als farbige RGB-Werte umgerechnet und via MQTT an eine LED-Steuerung gesendet.
-- Das Dashboard zeigt zusätzlich eine textuelle Übersicht des Spielerstatus und Effekts.
-- Die Effekte werden visuell über Farben wie Feuer (Rot), Gift (Grün), Eis (Blau) etc. dargestellt.
+- Alle 10 Sekunden wird die Spielerliste vom Server abgerufen.
+- Du kannst im Dashboard einen Spieler aus einem Dropdown auswählen.
+- Ein Button startet die Überwachung des Effekts dieses Spielers.
+- Alle 5 Sekunden werden die Effekte dieses Spielers abgefragt.
+- Die Effekte (z. B. Feuer, Gift, Eis, Blutung, Regeneration) werden über Farben in RGB umgerechnet.
+- Diese Farben werden über MQTT z. B. an ein LED-Device gesendet.
+- Zusätzlich wird der Effekttext im Dashboard angezeigt.
 
-## Welche Hardware wird benutzt?
+## 💡 Beispielhafte Effekte & Farben
 
-- Ein Rechner oder Server mit Node-RED (z.B. Raspberry Pi, PC)
-- MQTT-Broker (z.B. Mosquitto)
-- LED-Controller oder Mikrocontroller (z.B. ESP32, Arduino) mit angeschlossenen RGB-LEDs zur Darstellung der Effekte
-- Minecraft-Server mit aktivierter RCON-Schnittstelle
+| Effekt        | Farbe (LED) |
+|---------------|-------------|
+| Feuer         | Rot-Orange  |
+| Gift          | Grün        |
+| Eis           | Hellblau    |
+| Blutung       | Dunkelrot   |
+| Regeneration  | Türkis      |
+
+## 🧱 Verwendete Hardware
+
+- Node-RED-fähiges Gerät (z. B. Raspberry Pi, PC)
+- MQTT-Broker (lokal oder online, z. B. Mosquitto)
+- RGB-LEDs mit MQTT-fähiger Steuerung (z. B. ESP32 oder Arduino mit LED-Streifen)
+- Minecraft-Server mit RCON-Zugang
+
+## 🖥️ Dashboard
+
+- **Dropdown-Menü** zur Spielerauswahl
+- **Button**, um Effekte zu laden
+- **Textanzeige** mit dem aktuellen Effektstatus
+- **Farbvisualisierung** per MQTT auf LED-Ausgabe
 
 ---
 
-### Hinweis
-
-Die RCON-Zugangsdaten und MQTT-Broker-Adresse müssen in den Nodes an dein Setup angepasst werden.  
-Das Dashboard ist für einfache Bedienung und Visualisierung der Spieler-Effekte im Minecraft-Server gedacht.
+**Hinweis:** Es werden keine Rüstungen oder Items vergeben – der Fokus liegt ausschließlich auf dem **Live-Monitoring der aktiven Effekte von Spielern**.
 
 ---
 
-Viel Spaß beim Verwenden und Anpassen!
-
+Viel Spaß beim Experimentieren!  
+👉 Stelle sicher, dass RCON korrekt konfiguriert ist und der MQTT-Ausgang mit deinem LED-System funktioniert.
