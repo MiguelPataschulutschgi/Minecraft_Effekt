@@ -1,0 +1,330 @@
+[
+    {
+        "id": "6945436b23baffe0",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "14e4dbbf566ecd1d",
+        "type": "mqtt out",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "topic": "led",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "2e78326d404594ca",
+        "x": 1170,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "768a074a215928cd",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "Effekt to RGB Color",
+        "func": "let payload = msg.payload;\nlet effect = payload?.effect || \"\";\nlet intensity = typeof payload?.intensity === \"number\" ? payload.intensity : 1; // 1 = voll, 0 = ausgeklungen\n\nlet ledCount = 16;\nlet rgbValues = [];\n\n// Effektfarben definieren\nlet effectColors = {\n    \"Feuer\": { r: 255, g: 80, b: 0 },\n    \"Gift\": { r: 0, g: 255, b: 0 },\n    \"Eis\": { r: 100, g: 200, b: 255 },\n    \"Blutung\": { r: 200, g: 0, b: 0 },\n    \"Regeneration\": { r: 0, g: 200, b: 100 },\n    // weitere hier\n};\n\nlet baseColor = effectColors[effect] || null;\n\nfor (let i = 0; i < ledCount; i++) {\n    let r, g, b;\n\n    if (baseColor) {\n        // Effekt ist aktiv oder läuft aus → aufhellen mit Weiß-Anteil\n        r = Math.round(baseColor.r + (255 - baseColor.r) * (1 - intensity));\n        g = Math.round(baseColor.g + (255 - baseColor.g) * (1 - intensity));\n        b = Math.round(baseColor.b + (255 - baseColor.b) * (1 - intensity));\n    } else {\n        // Kein Effekt → komplett weiß\n        r = 255;\n        g = 255;\n        b = 255;\n    }\n\n    rgbValues.push({ r, g, b });\n}\n\n// Statusanzeige\nif (baseColor) {\n    node.status({\n        fill: \"blue\",\n        shape: \"dot\",\n        text: `Effekt: ${effect} (${Math.round(intensity * 100)}%)`\n    });\n} else {\n    node.status({\n        fill: \"grey\",\n        shape: \"ring\",\n        text: \"Kein Effekt\"\n    });\n}\n\nmsg.payload = rgbValues;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 930,
+        "y": 780,
+        "wires": [
+            [
+                "14e4dbbf566ecd1d"
+            ]
+        ]
+    },
+    {
+        "id": "2eb70457c07af6df",
+        "type": "playerinfo",
+        "z": "6945436b23baffe0",
+        "name": "Player Effekt",
+        "server": "fdd9776d718a368f",
+        "infoType": "effects",
+        "player": "",
+        "x": 730,
+        "y": 740,
+        "wires": [
+            [
+                "768a074a215928cd",
+                "status_format"
+            ]
+        ]
+    },
+    {
+        "id": "serverinfo1",
+        "type": "serverinfo",
+        "z": "6945436b23baffe0",
+        "name": "Server Info",
+        "server": "fdd9776d718a368f",
+        "x": 270,
+        "y": 840,
+        "wires": [
+            [
+                "function1"
+            ]
+        ]
+    },
+    {
+        "id": "inject1",
+        "type": "inject",
+        "z": "6945436b23baffe0",
+        "name": "Spieler ",
+        "props": [],
+        "repeat": "10",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.5,
+        "topic": "",
+        "x": 100,
+        "y": 840,
+        "wires": [
+            [
+                "serverinfo1"
+            ]
+        ]
+    },
+    {
+        "id": "function1",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "Namen bekommen",
+        "func": "let players = msg.payload.players || [];\nif (!Array.isArray(players)) {\n    players = [];\n}\n\n// msg.options erwartet ein Array von Strings oder Label-Value-Objekten\nmsg.options = players.map(p => {\n    return { [p.name]: p.name };  // ergibt z.B. { \"Alice\": \"Alice\" }\n});\n\nreturn msg;\n\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 840,
+        "wires": [
+            [
+                "3c33333333333333"
+            ]
+        ]
+    },
+    {
+        "id": "3c33333333333333",
+        "type": "ui_dropdown",
+        "z": "6945436b23baffe0",
+        "name": "Spieler auswählen",
+        "label": "Spieler",
+        "tooltip": "",
+        "place": "Bitte auswählen",
+        "group": "c4040d8b5e3258b0",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [],
+        "payload": "",
+        "topic": "playername",
+        "topicType": "str",
+        "className": "",
+        "x": 750,
+        "y": 840,
+        "wires": [
+            [
+                "5e55555555555555"
+            ]
+        ]
+    },
+    {
+        "id": "5e55555555555555",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "Spieler speichern",
+        "func": "flow.set(\"playername\", msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1010,
+        "y": 840,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "trigger_button",
+        "type": "ui_button",
+        "z": "6945436b23baffe0",
+        "name": "Sende Spieler",
+        "group": "c4040d8b5e3258b0",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Auswahl senden",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 170,
+        "y": 740,
+        "wires": [
+            [
+                "load_from_context"
+            ]
+        ]
+    },
+    {
+        "id": "load_from_context",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "Setze msg.payload",
+        "func": "msg.payload = flow.get(\"playername\") || \"\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 740,
+        "wires": [
+            [
+                "a7181636b105e7c8"
+            ]
+        ]
+    },
+    {
+        "id": "ui_text_hp_display",
+        "type": "ui_text",
+        "z": "6945436b23baffe0",
+        "group": "c4040d8b5e3258b0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "Effekt-Anzeige",
+        "label": "Spielerstatus",
+        "format": "{{msg.payload}}",
+        "layout": "col-center",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 1240,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "status_format",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "Formatierte Effekt-Anzeige",
+        "func": "let effect = msg.payload?.effect || \"\";\nlet player = msg.player || flow.get(\"playername\") || \"Unbekannt\";\n\nlet message = `🧍 ${player}`;\nif (effect) {\n    message += `\\n🌀 Effekt: ${effect}`;\n} else {\n    message += `\\n🌀 Kein Effekt`;\n}\n\nmsg.payload = message;\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 960,
+        "y": 700,
+        "wires": [
+            [
+                "ui_text_hp_display"
+            ]
+        ]
+    },
+    {
+        "id": "a7181636b105e7c8",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "Effekt-Abfrage",
+        "func": "let playername = flow.get(\"playername\");\nif (!playername) {\n    node.warn(\"Kein Spieler ausgewählt.\");\n    return null;\n}\n\n// Vorherigen Timer stoppen, falls vorhanden\nlet previousInterval = flow.get(\"effectInterval\");\nif (previousInterval) {\n    clearInterval(previousInterval);\n}\n\n// Neuer Intervall alle 5 Sekunden\nlet interval = setInterval(() => {\n    node.send({ payload: playername });\n}, 5000); // 5 Sekunden\n\nflow.set(\"effectInterval\", interval);\n\n// Erste Abfrage direkt senden\nreturn { payload: playername };\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "let interval = flow.get(\"healthInterval\");\nif (interval) {\n    clearInterval(interval);\n}",
+        "libs": [],
+        "x": 560,
+        "y": 740,
+        "wires": [
+            [
+                "2eb70457c07af6df"
+            ]
+        ]
+    },
+    {
+        "id": "2e78326d404594ca",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "tome.lu",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "fdd9776d718a368f",
+        "type": "serverconfig",
+        "host": "tome.lu",
+        "rconPort": 25575,
+        "rconPassword": "teinf"
+    },
+    {
+        "id": "c4040d8b5e3258b0",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "2cbc2cdef536dcb2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2cbc2cdef536dcb2",
+        "type": "ui_tab",
+        "name": "Minecraft",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    }
+]
