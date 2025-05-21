@@ -31,7 +31,7 @@ Dieses Projekt zeigt die **aktiven Status-Effekte von Minecraft-Spielern in Echt
 Installiere diese über „Manage Palette > Install“:
 
 - `node-red-dashboard`
-- `node-red-contrib-minecraft`
+- [`@tomsith/node-red-contrib-minecraft`](https://www.npmjs.com/package/@tomsith/node-red-contrib-minecraft) – Version **0.7.7**
 - `node-red-contrib-mqtt`
 - `node-red-contrib-ui-led` *(optional)*
 
@@ -103,6 +103,8 @@ LED-Controller	ESP32 mit MQTT-Firmware (ESPHome, Tasmota)
 LED-Streifen	WS2812b oder kompatible
 MQTT-Broker	Mosquitto lokal oder extern
 Steuerung	Raspberry Pi, PC oder Docker-Container
+
+
 
 
 
