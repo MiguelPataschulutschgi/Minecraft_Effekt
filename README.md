@@ -122,6 +122,6 @@ Das Dashboard enthält:
 
 🌈 LED-Vorschau (optional)
 
-🎲 Herz-Randomizer
+
 
 
