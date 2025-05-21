@@ -4,7 +4,7 @@ Dieses Projekt zeigt die **aktiven Status-Effekte von Minecraft-Spielern in Echt
 
 ---
 
-![Screenshot des Dashboards](./screenshot.png) <!-- Du kannst hier deinen Screenshot einfügen -->
+![Screenshot des Dashboards](./screenshot.png) <!-- Füge hier dein Bild ein -->
 
 ## 🧰 Funktionen
 
@@ -31,8 +31,7 @@ Dieses Projekt zeigt die **aktiven Status-Effekte von Minecraft-Spielern in Echt
 Installiere diese über „Manage Palette > Install“:
 
 - `node-red-dashboard`
-- `node-red-@tomsith/node-red-contrib-minecraft
-   0.7.7
+- `node-red-contrib-minecraft`
 - `node-red-contrib-mqtt`
 - `node-red-contrib-ui-led` *(optional)*
 
@@ -44,54 +43,48 @@ Installiere diese über „Manage Palette > Install“:
 
 ```bash
 npm install -g --unsafe-perm node-red
-.
 2. Node-RED starten
 bash
 Kopieren
 Bearbeiten
 node-red
 3. Dashboard & Flow
-Node-RED öffnen: http://localhost:1880
+Öffne Node-RED unter: http://localhost:1880
 
-Flow importieren (aus Flow-JSON): Menu → Import
+Importiere den Flow: Menu → Import → Flow-JSON einfügen
 
-Dashboard unter http://localhost:1880/ui öffnen
+Öffne das Dashboard: http://localhost:1880/ui
 
 4. Konfiguration
-Passe folgende Nodes an:
+Passe folgende Nodes im Flow an:
 
 rcon-Node: IP, Port, Passwort deines Minecraft-Servers
 
-mqtt-broker: Adresse deines Brokers
+mqtt-broker: Adresse deines Brokers (z. B. mqtt://localhost)
 
-LED-Ziel-Topic z. B. led/rgb
+LED-Ziel-Topic: z. B. led/rgb
 
 🧠 Funktionsweise
-Spielerliste abrufen:
-
+Spielerliste abrufen
 Automatisch alle 10 Sekunden
 
 Dropdown zur Spielerwahl im Dashboard
 
-Effekte überwachen:
-
+Effekte überwachen
 Effekte werden alle 5 Sekunden abgefragt
 
 Der erste erkannte Effekt bestimmt die RGB-Farbe
 
-MQTT-Ausgabe:
+MQTT-Ausgabe
+RGB-Wert wird an MQTT-Topic z. B. led/rgb gesendet
 
-RGB-Wert wird an Topic z. B. led/rgb gesendet
+LED-Controller (ESP32, Tasmota etc.) zeigt die entsprechende Farbe
 
-LED-Controller (ESP32, Tasmota etc.) zeigt Farbe
+Entity-Modus
+Das Dashboard erlaubt das Spawnen von Mobs mit Effekten
 
-Entity-Modus:
-
-Dashboard erlaubt das Spawnen von Mobs mit Effekten
-
-Zufallsmodus:
-
-Button setzt zufällige Herzanzahl auf Spieler
+Zufallsmodus
+Button im Dashboard setzt zufällige Herzanzahl auf einen Spieler
 
 🎨 Effektfarben (Beispiel)
 Effekt	RGB-Farbe
@@ -102,25 +95,16 @@ Blutung	139, 0, 0
 Regeneration	64, 224, 208
 Stärke	0, 0, 255
 
-🔧 Farben kannst du im Function-Node frei anpassen!
+🔧 Die Farben kannst du im Function-Node selbst anpassen!
 
 🛠️ Hardware-Beispiel
 Komponente	Beispiel
-LED-Controller	ESP32 + MQTT-Firmware (z. B. ESPHome, Tasmota)
-LED-Streifen	WS2812b
-Broker	Mosquitto (lokal oder extern)
-Steuerung	Raspberry Pi, PC, Docker-Container
+LED-Controller	ESP32 mit MQTT-Firmware (ESPHome, Tasmota)
+LED-Streifen	WS2812b oder kompatible
+MQTT-Broker	Mosquitto lokal oder extern
+Steuerung	Raspberry Pi, PC oder Docker-Container
 
-📋 Node-RED Dashboard
-Das Dashboard enthält:
 
-🎛️ Dropdowns für Spieler, Effekte, Entities
-
-🟢 Button zur Anwendung von Effekten
-
-💬 Textanzeige aktiver Effekte
-
-🌈 LED-Vorschau (optional)
 
 
 
