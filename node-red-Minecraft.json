@@ -8,59 +8,301 @@
         "env": []
     },
     {
-        "id": "14e4dbbf566ecd1d",
-        "type": "mqtt out",
-        "z": "6945436b23baffe0",
+        "id": "d9dc3ad7486a6220",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD.MM.YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ddf5867c08f7b57e",
+        "type": "ui_group",
+        "name": "Standard",
+        "tab": "",
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "65a21f569822a635",
+        "type": "ui_group",
+        "name": "Graphs",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7a52227bb2f81020",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "",
+        "order": 1,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "c6e8889423734faa",
+        "type": "ui_tab",
+        "name": "Led",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ac0d8abc92389f33",
+        "type": "ui_group",
+        "name": "led",
+        "tab": "c6e8889423734faa",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c4d23514d31ad45d",
+        "type": "serverconfig",
+        "host": "tome.lu",
+        "rconPort": "25575",
+        "rconPassword": "teinf"
+    },
+    {
+        "id": "11c850932ece9e2c",
+        "type": "ui_tab",
+        "name": "Minecraft Steuerung",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "c3ad962acf934a9b",
+        "type": "ui_tab",
+        "name": "Minecraft Control",
+        "icon": "dashboard",
+        "order": 1
+    },
+    {
+        "id": "9f4c0a6713beecf2",
+        "type": "ui_group",
+        "name": "Mob-Spawner",
+        "tab": "c3ad962acf934a9b",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "97701dc095749fed",
+        "type": "ui_group",
+        "name": "Dashboard",
+        "tab": "11c850932ece9e2c",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false
+    },
+    {
+        "id": "fdd9776d718a368f",
+        "type": "serverconfig",
+        "host": "tome.lu",
+        "rconPort": 25575,
+        "rconPassword": "teinf"
+    },
+    {
+        "id": "2cbc2cdef536dcb2",
+        "type": "ui_tab",
+        "name": "Minecraft",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "c4040d8b5e3258b0",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "2cbc2cdef536dcb2",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "2cb4c582896ebc60",
+        "type": "mqtt-broker",
         "name": "",
-        "topic": "led",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
+        "broker": "tome.lu",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
         "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "2e78326d404594ca",
-        "x": 1170,
-        "y": 780,
-        "wires": []
+        "sessionExpiry": ""
     },
     {
-        "id": "768a074a215928cd",
-        "type": "function",
-        "z": "6945436b23baffe0",
-        "name": "Effekt to RGB Color",
-        "func": "let payload = msg.payload;\nlet effect = payload?.effect || \"\";\nlet intensity = typeof payload?.intensity === \"number\" ? payload.intensity : 1; // 1 = voll, 0 = ausgeklungen\n\nlet ledCount = 16;\nlet rgbValues = [];\n\n// Effektfarben definieren\nlet effectColors = {\n    \"Feuer\": { r: 255, g: 80, b: 0 },\n    \"Gift\": { r: 0, g: 255, b: 0 },\n    \"Eis\": { r: 100, g: 200, b: 255 },\n    \"Blutung\": { r: 200, g: 0, b: 0 },\n    \"Regeneration\": { r: 0, g: 200, b: 100 },\n    // weitere hier\n};\n\nlet baseColor = effectColors[effect] || null;\n\nfor (let i = 0; i < ledCount; i++) {\n    let r, g, b;\n\n    if (baseColor) {\n        // Effekt ist aktiv oder läuft aus → aufhellen mit Weiß-Anteil\n        r = Math.round(baseColor.r + (255 - baseColor.r) * (1 - intensity));\n        g = Math.round(baseColor.g + (255 - baseColor.g) * (1 - intensity));\n        b = Math.round(baseColor.b + (255 - baseColor.b) * (1 - intensity));\n    } else {\n        // Kein Effekt → komplett weiß\n        r = 255;\n        g = 255;\n        b = 255;\n    }\n\n    rgbValues.push({ r, g, b });\n}\n\n// Statusanzeige\nif (baseColor) {\n    node.status({\n        fill: \"blue\",\n        shape: \"dot\",\n        text: `Effekt: ${effect} (${Math.round(intensity * 100)}%)`\n    });\n} else {\n    node.status({\n        fill: \"grey\",\n        shape: \"ring\",\n        text: \"Kein Effekt\"\n    });\n}\n\nmsg.payload = rgbValues;\nreturn msg;\n",
-        "outputs": 1,
-        "timeout": "",
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 930,
-        "y": 780,
-        "wires": [
-            [
-                "14e4dbbf566ecd1d"
-            ]
-        ]
+        "id": "server-config",
+        "type": "serverconfig",
+        "host": "tome.lu",
+        "rconPort": "25575",
+        "rconPassword": "teinf"
     },
     {
-        "id": "2eb70457c07af6df",
-        "type": "playerinfo",
-        "z": "6945436b23baffe0",
-        "name": "Player Effekt",
-        "server": "fdd9776d718a368f",
-        "infoType": "effects",
-        "player": "",
-        "x": 730,
-        "y": 740,
-        "wires": [
-            [
-                "768a074a215928cd",
-                "status_format"
-            ]
-        ]
+        "id": "mc-tab",
+        "type": "ui_tab",
+        "name": "Minecraft",
+        "icon": "fa-gamepad",
+        "order": 1
+    },
+    {
+        "id": "mc-dashboard",
+        "type": "ui_group",
+        "name": "Minecraft Admin",
+        "tab": "mc-tab",
+        "order": 1,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "8125eb9859cfd380",
+        "type": "ui_group",
+        "name": "Minecraft Steuerung",
+        "tab": "mc-tab",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "server-config-1",
+        "type": "serverconfig",
+        "host": "DEINE_SERVER_IP"
+    },
+    {
+        "id": "mc-server",
+        "type": "serverconfig",
+        "host": "127.0.0.1",
+        "rconPassword": "DEIN_RCON_PASSWORT"
+    },
+    {
+        "id": "server_config_id",
+        "type": "serverconfig",
+        "host": "tome.lu",
+        "rconPort": "25575",
+        "rconPassword": "teinf"
     },
     {
         "id": "serverinfo1",
@@ -161,16 +403,16 @@
         ]
     },
     {
-        "id": "trigger_button",
+        "id": "0d9bbdad165783a1",
         "type": "ui_button",
         "z": "6945436b23baffe0",
-        "name": "Sende Spieler",
+        "name": "",
         "group": "c4040d8b5e3258b0",
-        "order": 2,
+        "order": 3,
         "width": 0,
         "height": 0,
         "passthru": false,
-        "label": "Auswahl senden",
+        "label": "Dia Rüstung",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
@@ -180,151 +422,776 @@
         "payloadType": "str",
         "topic": "",
         "topicType": "str",
-        "x": 170,
-        "y": 740,
+        "x": 110,
+        "y": 560,
         "wires": [
             [
-                "load_from_context"
+                "5b4431603588448b"
             ]
         ]
     },
     {
-        "id": "load_from_context",
+        "id": "5b4431603588448b",
         "type": "function",
         "z": "6945436b23baffe0",
-        "name": "Setze msg.payload",
-        "func": "msg.payload = flow.get(\"playername\") || \"\";\nreturn msg;",
+        "name": "function 6",
+        "func": "msg.payload = flow.get(\"playername\") || \"\";\nreturn msg;\n",
         "outputs": 1,
-        "timeout": "",
+        "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 370,
-        "y": 740,
+        "x": 320,
+        "y": 560,
         "wires": [
             [
-                "a7181636b105e7c8"
+                "a0b7f5f811c11ffd"
             ]
         ]
     },
     {
-        "id": "ui_text_hp_display",
-        "type": "ui_text",
+        "id": "a0b7f5f811c11ffd",
+        "type": "function",
         "z": "6945436b23baffe0",
+        "name": "function 7",
+        "func": "// Spielername aus Flow holen\nlet player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername ist nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Liste der Diamantrüstungs-Items mit Menge\nlet items = [\n    { name: \"diamond_helmet\", count: 1 },\n    { name: \"diamond_chestplate\", count: 1 },\n    { name: \"diamond_leggings\", count: 1 },\n    { name: \"diamond_boots\", count: 1 }\n];\n\n// Jedes Item zeitversetzt senden (300ms Abstand)\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300);\n});\n\n// Da wir node.send() manuell nutzen, return null\nreturn null;\n\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 500,
+        "y": 560,
+        "wires": [
+            [
+                "45a93a0e13b38312"
+            ]
+        ]
+    },
+    {
+        "id": "3dbb801455c36eed",
+        "type": "debug",
+        "z": "6945436b23baffe0",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1040,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "238921cf2bfe7113",
+        "type": "ui_button",
+        "z": "6945436b23baffe0",
+        "name": "",
         "group": "c4040d8b5e3258b0",
         "order": 3,
         "width": 0,
         "height": 0,
-        "name": "Effekt-Anzeige",
-        "label": "Spielerstatus",
-        "format": "{{msg.payload}}",
-        "layout": "col-center",
+        "passthru": false,
+        "label": "Leather Rüstung",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
         "className": "",
-        "style": false,
-        "font": "",
-        "fontSize": "",
-        "color": "#000000",
-        "x": 1240,
-        "y": 700,
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 110,
+        "y": 480,
+        "wires": [
+            [
+                "ddf590b104abc78d"
+            ]
+        ]
+    },
+    {
+        "id": "ddf590b104abc78d",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 8",
+        "func": "msg.payload = flow.get(\"playername\") || \"\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 480,
+        "wires": [
+            [
+                "e1954a921dc4ff6a"
+            ]
+        ]
+    },
+    {
+        "id": "e1954a921dc4ff6a",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 9",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Lederrüstungsteile mit je 1 Stück\nlet items = [\n    { name: \"leather_helmet\", count: 1 },\n    { name: \"leather_chestplate\", count: 1 },\n    { name: \"leather_leggings\", count: 1 },\n    { name: \"leather_boots\", count: 1 }\n];\n\n// Items mit kurzem Zeitabstand senden\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300);\n});\n\nreturn null;\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 480,
+        "wires": [
+            [
+                "ada60d2402f2909d"
+            ]
+        ]
+    },
+    {
+        "id": "8ca80e0a5d7ed6e7",
+        "type": "debug",
+        "z": "6945436b23baffe0",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 480,
         "wires": []
     },
     {
-        "id": "status_format",
+        "id": "441e0e8ca793af02",
+        "type": "ui_button",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "group": "c4040d8b5e3258b0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Chain Rüstung",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 100,
+        "y": 420,
+        "wires": [
+            [
+                "3b6d4173bdf8b009"
+            ]
+        ]
+    },
+    {
+        "id": "3b6d4173bdf8b009",
         "type": "function",
         "z": "6945436b23baffe0",
-        "name": "Formatierte Effekt-Anzeige",
-        "func": "let effect = msg.payload?.effect || \"\";\nlet player = msg.player || flow.get(\"playername\") || \"Unbekannt\";\n\nlet message = `🧍 ${player}`;\nif (effect) {\n    message += `\\n🌀 Effekt: ${effect}`;\n} else {\n    message += `\\n🌀 Kein Effekt`;\n}\n\nmsg.payload = message;\nreturn msg;\n",
+        "name": "function 10",
+        "func": "msg.payload = flow.get(\"playername\") || \"\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 420,
+        "wires": [
+            [
+                "9d7a7abca85f74e2"
+            ]
+        ]
+    },
+    {
+        "id": "9d7a7abca85f74e2",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 11",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Kettenrüstung: Helm, Brust, Hose, Schuhe – mit jeweils 1 Stück\nlet items = [\n    { name: \"chainmail_helmet\", count: 1 },\n    { name: \"chainmail_chestplate\", count: 1 },\n    { name: \"chainmail_leggings\", count: 1 },\n    { name: \"chainmail_boots\", count: 1 }\n];\n\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300); // 300ms Abstand zwischen Items\n});\n\nreturn null;\n\n\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 420,
+        "wires": [
+            [
+                "31a66b6338a3794b"
+            ]
+        ]
+    },
+    {
+        "id": "12958714e5d6b8a6",
+        "type": "debug",
+        "z": "6945436b23baffe0",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1020,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "7cb36799110dd82a",
+        "type": "ui_button",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "group": "c4040d8b5e3258b0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Bow Kit",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 60,
+        "y": 360,
+        "wires": [
+            [
+                "441ed5bc1c9eede7"
+            ]
+        ]
+    },
+    {
+        "id": "68e12c37d9c6e9f0",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 13",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Items: Bogen und Pfeile\nlet items = [\n    { name: \"bow\", count: 1 },\n    { name: \"arrow\", count: 360 }\n];\n\n// Für jedes Item eine Nachricht senden (mit kleinem Delay)\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300);\n});\n\n// Stärke-Effekt-Befehl etwas später senden, damit Items vorher gegeben wurden\nsetTimeout(() => {\n    node.send({\n        payload: `/effect give ${player} minecraft:strength 300 0 true`\n    });\n}, items.length * 300 + 100);\n\nreturn null; // Weil node.send() manuell genutzt wird\n\n\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 360,
+        "wires": [
+            [
+                "b9a98206f07f40e4"
+            ]
+        ]
+    },
+    {
+        "id": "763c29a827f5dc69",
+        "type": "debug",
+        "z": "6945436b23baffe0",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 820,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "b9c901ccd9491cea",
+        "type": "ui_button",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "group": "c4040d8b5e3258b0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "PVP Kit",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 60,
+        "y": 300,
+        "wires": [
+            [
+                "f0cdc5c4e427cd08"
+            ]
+        ]
+    },
+    {
+        "id": "f0cdc5c4e427cd08",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 14",
+        "func": "msg.payload = flow.get(\"playername\") || \"\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 280,
+        "y": 300,
+        "wires": [
+            [
+                "211dd5d130aed038"
+            ]
+        ]
+    },
+    {
+        "id": "211dd5d130aed038",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 15",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Liste der Items mit Namen und Menge\nlet items = [\n    { name: \"golden_apple\", count: 1 },\n    { name: \"iron_sword\", count: 1 },\n    { name: \"netherite_boots\", count: 1 }\n];\n\n// Für jedes Item eine Nachricht senden, mit Verzögerung\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300); // 300ms Abstand zwischen den Befehlen\n});\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 300,
+        "wires": [
+            [
+                "07e2d59b379b4995"
+            ]
+        ]
+    },
+    {
+        "id": "07e2d59b379b4995",
+        "type": "playermanage",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "c4d23514d31ad45d",
+        "action": "give",
+        "gamemode": "survival",
+        "x": 660,
+        "y": 300,
+        "wires": [
+            [
+                "c8ad802eecad5a84"
+            ]
+        ]
+    },
+    {
+        "id": "c8ad802eecad5a84",
+        "type": "debug",
+        "z": "6945436b23baffe0",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 940,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "dc8fbedf29be2299",
+        "type": "ui_button",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "group": "c4040d8b5e3258b0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Gold Rüstung",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 140,
+        "y": 640,
+        "wires": [
+            [
+                "56dc80283756032a"
+            ]
+        ]
+    },
+    {
+        "id": "56dc80283756032a",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 4",
+        "func": "msg.payload = flow.get(\"playername\") || \"\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 640,
+        "wires": [
+            [
+                "b343c392fc669f79"
+            ]
+        ]
+    },
+    {
+        "id": "b343c392fc669f79",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 5",
+        "func": "// Spielername aus Flow holen\nlet player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername ist nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Liste der Items mit Menge\nlet items = [\n    { name: \"golden_helmet\", count: 1 },\n    { name: \"golden_chestplate\", count: 1 },\n    { name: \"golden_leggings\", count: 1 },\n    { name: \"golden_boots\", count: 1 }\n];\n\n// Jedes Item zeitversetzt senden (300ms Abstand)\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300); // 0ms, 300ms, 600ms, 900ms\n});\n\n// Da wir node.send() manuell nutzen, return null\nreturn null;\n\n\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 640,
+        "wires": [
+            [
+                "0ba5505f93eb40bd"
+            ]
+        ]
+    },
+    {
+        "id": "c5f01381cbed2748",
+        "type": "debug",
+        "z": "6945436b23baffe0",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "0ba5505f93eb40bd",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 16",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername ist nicht gesetzt (flow.playername).\");\n    return null;\n}\n\nlet commands = [\n    `/item replace entity ${player} armor.head with minecraft:golden_helmet`,\n    `/item replace entity ${player} armor.chest with minecraft:golden_chestplate`,\n    `/item replace entity ${player} armor.legs with minecraft:golden_leggings`,\n    `/item replace entity ${player} armor.feet with minecraft:golden_boots`\n];\n\n// Alle Kommandos sofort senden\ncommands.forEach(cmd => {\n    node.send({ payload: cmd });\n});\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 640,
+        "wires": [
+            [
+                "cc4d9378b7af1865"
+            ]
+        ]
+    },
+    {
+        "id": "cc4d9378b7af1865",
+        "type": "rcon",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "c4d23514d31ad45d",
+        "command": "",
+        "x": 850,
+        "y": 640,
+        "wires": [
+            [
+                "c5f01381cbed2748"
+            ]
+        ]
+    },
+    {
+        "id": "45a93a0e13b38312",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 17",
+        "func": "\nlet player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername ist nicht gesetzt (flow.playername).\");\n    return null;\n}\n\nlet commands = [\n    `/item replace entity ${player} armor.head with minecraft:diamond_helmet`,\n    `/item replace entity ${player} armor.chest with minecraft:diamond_chestplate`,\n    `/item replace entity ${player} armor.legs with minecraft:diamond_leggings`,\n    `/item replace entity ${player} armor.feet with minecraft:diamond_boots`\n];\n\ncommands.forEach(cmd => {\n    node.send({ payload: cmd });\n});\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 560,
+        "wires": [
+            [
+                "b8246af12ad41748"
+            ]
+        ]
+    },
+    {
+        "id": "b8246af12ad41748",
+        "type": "rcon",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "c4d23514d31ad45d",
+        "command": "",
+        "x": 870,
+        "y": 560,
+        "wires": [
+            [
+                "3dbb801455c36eed"
+            ]
+        ]
+    },
+    {
+        "id": "500a8b5e777ea817",
+        "type": "rcon",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "c4d23514d31ad45d",
+        "command": "",
+        "x": 890,
+        "y": 420,
+        "wires": [
+            [
+                "12958714e5d6b8a6"
+            ]
+        ]
+    },
+    {
+        "id": "31a66b6338a3794b",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 18",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername ist nicht gesetzt (flow.playername).\");\n    return null;\n}\n\nlet commands = [\n    `/item replace entity ${player} armor.head with minecraft:chainmail_helmet`,\n    `/item replace entity ${player} armor.chest with minecraft:chainmail_chestplate`,\n    `/item replace entity ${player} armor.legs with minecraft:chainmail_leggings`,\n    `/item replace entity ${player} armor.feet with minecraft:chainmail_boots`\n];\n\ncommands.forEach(cmd => {\n    node.send({ payload: cmd });\n});\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 420,
+        "wires": [
+            [
+                "500a8b5e777ea817"
+            ]
+        ]
+    },
+    {
+        "id": "ada60d2402f2909d",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 19",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername ist nicht gesetzt (flow.playername).\");\n    return null;\n}\n\nlet commands = [\n    `/item replace entity ${player} armor.head with minecraft:leather_helmet`,\n    `/item replace entity ${player} armor.chest with minecraft:leather_chestplate`,\n    `/item replace entity ${player} armor.legs with minecraft:leather_leggings`,\n    `/item replace entity ${player} armor.feet with minecraft:leather_boots`\n];\n\ncommands.forEach(cmd => {\n    node.send({ payload: cmd });\n});\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 650,
+        "y": 480,
+        "wires": [
+            [
+                "ac07d897c37cd0dc"
+            ]
+        ]
+    },
+    {
+        "id": "ac07d897c37cd0dc",
+        "type": "rcon",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "c4d23514d31ad45d",
+        "command": "",
+        "x": 830,
+        "y": 480,
+        "wires": [
+            [
+                "8ca80e0a5d7ed6e7"
+            ]
+        ]
+    },
+    {
+        "id": "b9a98206f07f40e4",
+        "type": "rcon",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "c4d23514d31ad45d",
+        "command": "",
+        "x": 650,
+        "y": 360,
+        "wires": [
+            [
+                "763c29a827f5dc69"
+            ]
+        ]
+    },
+    {
+        "id": "441ed5bc1c9eede7",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 20",
+        "func": "msg.payload = flow.get(\"playername\") || \"\";\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 290,
+        "y": 360,
+        "wires": [
+            [
+                "68e12c37d9c6e9f0"
+            ]
+        ]
+    },
+    {
+        "id": "d02ed7b0f053b843",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "Inventar-Abfragebefehl",
+        "func": "let player = flow.get(\"playername\");\nmsg.payload = `data get entity ${player} Inventory`;\nreturn msg;",
         "outputs": 1,
         "timeout": "",
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 960,
-        "y": 700,
+        "x": 1220,
+        "y": 1760,
         "wires": [
             [
-                "ui_text_hp_display"
+                "b918e0d2f944791b"
             ]
         ]
     },
     {
-        "id": "a7181636b105e7c8",
+        "id": "b918e0d2f944791b",
+        "type": "rcon",
+        "z": "6945436b23baffe0",
+        "name": "RCON senden",
+        "server": "c4d23514d31ad45d",
+        "command": "",
+        "x": 1420,
+        "y": 1760,
+        "wires": [
+            [
+                "df054704f8643c5f"
+            ]
+        ]
+    },
+    {
+        "id": "df054704f8643c5f",
         "type": "function",
         "z": "6945436b23baffe0",
-        "name": "Effekt-Abfrage",
-        "func": "let playername = flow.get(\"playername\");\nif (!playername) {\n    node.warn(\"Kein Spieler ausgewählt.\");\n    return null;\n}\n\n// Vorherigen Timer stoppen, falls vorhanden\nlet previousInterval = flow.get(\"effectInterval\");\nif (previousInterval) {\n    clearInterval(previousInterval);\n}\n\n// Neuer Intervall alle 5 Sekunden\nlet interval = setInterval(() => {\n    node.send({ payload: playername });\n}, 5000); // 5 Sekunden\n\nflow.set(\"effectInterval\", interval);\n\n// Erste Abfrage direkt senden\nreturn { payload: playername };\n",
+        "name": "Hotbar-Item Analyse",
+        "func": "// 1. VOLLSTÄNDIGE Minecraft-Item-Farbdatenbank (1.20+)\nconst itemColors = {\n    // ===== BASISBLÖCKE =====\n    \"stone\": { r: 125, g: 125, b: 125 },\n    \"dirt\": { r: 134, g: 96, b: 67 },\n    \"cobblestone\": { r: 117, g: 117, b: 117 },\n    \"grass_block\": { r: 97, g: 119, b: 45 },\n    \"sand\": { r: 219, g: 207, b: 163 },\n    \"gravel\": { r: 127, g: 124, b: 118 },\n\n    // ===== HOLZ =====\n    \"oak_\": { r: 168, g: 126, b: 80 }, // Gilt für Planks, Log, Door etc.\n    \"spruce_\": { r: 104, g: 78, b: 47 },\n    \"birch_\": { r: 210, g: 197, b: 151 },\n    \"jungle_\": { r: 160, g: 115, b: 81 },\n    \"acacia_\": { r: 168, g: 90, b: 50 },\n    \"dark_oak_\": { r: 60, g: 46, b: 26 },\n    \"mangrove_\": { r: 114, g: 58, b: 51 },\n\n    // ===== WERKZEUGE/WAFFEN =====\n    \"wooden_\": { r: 157, g: 128, b: 79 }, // Pickaxe, Sword etc.\n    \"stone_\": { r: 125, g: 125, b: 125 },\n    \"iron_\": { r: 196, g: 196, b: 196 },\n    \"golden_\": { r: 246, g: 215, b: 62 },\n    \"diamond_\": { r: 92, g: 219, b: 213 },\n    \"netherite_\": { r: 65, g: 61, b: 62 },\n    \"bow\": { r: 139, g: 111, b: 78 },\n    \"arrow\": { r: 180, g: 180, b: 180 },\n    \"stick\": { r: 148, g: 118, b: 76 },\n    \"fishing_rod\": { r: 139, g: 111, b: 78 },\n\n    // ===== NAHRUNG =====\n    \"apple\": { r: 181, g: 46, b: 38 },\n    \"golden_apple\": { r: 246, g: 215, b: 62 },\n    \"bread\": { r: 200, g: 150, b: 50 },\n    \"steak\": { r: 150, g: 80, b: 0 },\n    \"cooked_porkchop\": { r: 228, g: 157, b: 116 },\n    \"potato\": { r: 197, g: 143, b: 39 },\n    \"carrot\": { r: 227, g: 125, b: 27 },\n    \"pumpkin_pie\": { r: 238, g: 167, b: 57 },\n\n    // ===== MATERIALIEN =====\n    \"flint\": { r: 97, g: 97, b: 97 },\n    \"string\": { r: 200, g: 200, b: 200 },\n    \"feather\": { r: 220, g: 220, b: 220 },\n    \"gunpowder\": { r: 100, g: 100, b: 100 },\n    \"coal\": { r: 30, g: 30, b: 30 },\n    \"iron_ingot\": { r: 196, g: 196, b: 196 },\n    \"gold_ingot\": { r: 246, g: 215, b: 62 },\n    \"diamond\": { r: 92, g: 219, b: 213 },\n    \"emerald\": { r: 80, g: 200, b: 120 },\n    \"redstone\": { r: 255, g: 0, b: 0 },\n    \"quartz\": { r: 220, g: 214, b: 207 },\n\n    // ===== CRAFTING =====\n    \"crafting_table\": { r: 168, g: 126, b: 80 },\n    \"furnace\": { r: 117, g: 117, b: 117 },\n    \"chest\": { r: 168, g: 126, b: 80 },\n    \"anvil\": { r: 96, g: 96, b: 96 },\n    \"enchanting_table\": { r: 60, g: 46, b: 26 },\n    \"loom\": { r: 168, g: 126, b: 80 },\n\n    // ===== SPECIALS =====\n    \"compass\": { r: 196, g: 196, b: 196 },\n    \"clock\": { r: 246, g: 215, b: 62 },\n    \"bucket\": { r: 196, g: 196, b: 196 },\n    \"water_bucket\": { r: 64, g: 64, b: 255 },\n    \"lava_bucket\": { r: 255, g: 100, b: 0 },\n    \"spyglass\": { r: 104, g: 83, b: 50 },\n\n    // ===== DEFAULT =====\n    \"empty\": { r: 30, g: 30, b: 30 }\n};\n\n// 2. Intelligente Farberkennung mit Prioritäten\nfunction getItemColor(itemId) {\n    // Spezialfälle mit höchster Priorität\n    const specialCases = {\n        \"enchanted_golden_apple\": { r: 246, g: 215, b: 62, effect: \"glow\" },\n        \"nether_star\": { r: 220, g: 220, b: 255, effect: \"pulse\" }\n    };\n    \n    if (specialCases[itemId]) {\n        return specialCases[itemId];\n    }\n\n    // Standardprüfung\n    for (const [pattern, color] of Object.entries(itemColors)) {\n        if (itemId.includes(pattern)) {\n            return color;\n        }\n    }\n    return itemColors[\"empty\"];\n}\n\n// 3. LED-Zuordnung für Hotbar\nlet leds = Array(16).fill(itemColors[\"empty\"]);\nconst slotRegex = /Slot: (\\d+)b.*?id: \"([^\"]+)\"/g;\nlet match;\n\nwhile ((match = slotRegex.exec(msg.payload.toString())) !== null) {\n    const slot = parseInt(match[1]);\n    if (slot >= 0 && slot <= 8) {\n        const itemId = match[2].toLowerCase();\n        leds[slot] = getItemColor(itemId);\n        \n        // Debug-Ausgabe für neue/unbekannte Items\n        if (JSON.stringify(leds[slot]) === JSON.stringify(itemColors[\"empty\"]) && !itemId.includes(\"air\")) {\n            node.warn(`UNBEKANNTES ITEM: ${itemId}`);\n        }\n    }\n}\n\n// 4. Erweiterte Statusmeldung\nconst hotbarItems = [];\nfor (let i = 0; i < 9; i++) {\n    if (!JSON.stringify(leds[i]) === JSON.stringify(itemColors[\"empty\"])) {\n        hotbarItems.push(`Slot ${i}`);\n    }\n}\n\nnode.status({\n    fill: hotbarItems.length > 0 ? \"green\" : \"grey\",\n    shape: \"dot\",\n    text: hotbarItems.length > 0 \n        ? `Hotbar: ${hotbarItems.join(\", \")}` \n        : \"Hotbar leer\"\n});\n\n// 5. Finale Ausgabe\nmsg.payload = {\n    leds: leds,\n    details: {\n        slots: {\n            0: leds[0],\n            1: leds[1],\n            // ... bis 8\n        },\n        version: \"1.20\",\n        timestamp: new Date().toISOString()\n    }\n};\n\nreturn msg;",
         "outputs": 1,
         "timeout": "",
-        "noerr": 0,
+        "noerr": 2,
         "initialize": "",
-        "finalize": "let interval = flow.get(\"healthInterval\");\nif (interval) {\n    clearInterval(interval);\n}",
+        "finalize": "",
         "libs": [],
-        "x": 560,
-        "y": 740,
+        "x": 1640,
+        "y": 1780,
         "wires": [
             [
-                "2eb70457c07af6df"
+                "4ceb9872fa4fc4a5",
+                "347afc066327c758"
             ]
         ]
     },
     {
-        "id": "2e78326d404594ca",
-        "type": "mqtt-broker",
+        "id": "4ceb9872fa4fc4a5",
+        "type": "debug",
+        "z": "6945436b23baffe0",
+        "name": "LED Output",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1910,
+        "y": 1820,
+        "wires": []
+    },
+    {
+        "id": "8a46f3d10dbee91c",
+        "type": "ui_button",
+        "z": "6945436b23baffe0",
         "name": "",
-        "broker": "tome.lu",
-        "port": 1883,
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": 4,
-        "keepalive": 60,
-        "cleansession": true,
-        "autoUnsubscribe": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
+        "group": "c4040d8b5e3258b0",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Inventar Check",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 740,
+        "y": 1760,
+        "wires": [
+            [
+                "d02ed7b0f053b843"
+            ]
+        ]
+    },
+    {
+        "id": "347afc066327c758",
+        "type": "mqtt out",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "topic": "led",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
         "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "fdd9776d718a368f",
-        "type": "serverconfig",
-        "host": "tome.lu",
-        "rconPort": 25575,
-        "rconPassword": "teinf"
-    },
-    {
-        "id": "c4040d8b5e3258b0",
-        "type": "ui_group",
-        "name": "Default",
-        "tab": "2cbc2cdef536dcb2",
-        "order": 1,
-        "disp": true,
-        "width": 6,
-        "collapse": false,
-        "className": ""
-    },
-    {
-        "id": "2cbc2cdef536dcb2",
-        "type": "ui_tab",
-        "name": "Minecraft",
-        "icon": "dashboard",
-        "order": 1,
-        "disabled": false,
-        "hidden": false
+        "correl": "",
+        "expiry": "",
+        "broker": "2cb4c582896ebc60",
+        "x": 1950,
+        "y": 1600,
+        "wires": []
     }
 ]
