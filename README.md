@@ -1,108 +1,180 @@
-# 🎮 Minecraft Status Effects Monitor mit LED-Visualisierung
+Minecraft Server Manager - Node-RED Dashboard
+Overview
+This Node-RED project provides a web-based dashboard for managing a Minecraft server with the following features:
 
-Dieses Projekt zeigt die **aktiven Status-Effekte von Minecraft-Spielern in Echtzeit** über ein **Node-RED Dashboard** an. Die Effekte werden per RCON vom Minecraft-Server abgefragt und als **RGB-Farben über MQTT** an z. B. LED-Streifen weitergegeben.
+Player selection and management
 
----
+Instant armor kits with auto-equip functionality
 
-![Screenshot des Dashboards](./screenshot.png) <!-- Füge hier dein Bild ein -->
+Real-time inventory tracking with LED visualization
 
-## 🧰 Funktionen
+Server command execution via RCON
 
-- 🔄 Automatische Spieler-Abfrage per RCON
-- 🧍 Auswahl von Spielern und Entities über das Dashboard
-- 💡 Live-Visualisierung von Effekten auf RGB-LEDs (z. B. WS2812b)
-- 📶 MQTT-Integration zur Steuerung externer Hardware
-- 💊 Darstellung von Effekten, Leben & Entities im UI
-- 🎲 Zufalls-Herzvergabe über Button
-- 🧠 Einfache Erweiterbarkeit
+Key Features
+Player Management
+Dropdown menu automatically lists all online players
 
----
+Selected player is stored for subsequent commands
 
-## 📦 Voraussetzungen
+Player inventory inspection system
 
-### Software
+Armor Kits
+Available Kits:
 
-- [Node-RED](https://nodered.org/)
-- Minecraft Java Server mit aktivierter **RCON**
-- MQTT-Broker (z. B. [Mosquitto](https://mosquitto.org/), CloudMQTT, tome.lu)
+Diamond Armor
 
-### Node-RED Module
+Leather Armor
 
-Installiere diese über „Manage Palette > Install“:
+Chainmail Armor
 
-- `node-red-dashboard`
-- [`@tomsith/node-red-contrib-minecraft`](https://www.npmjs.com/package/@tomsith/node-red-contrib-minecraft) – Version **0.7.7**
-- `node-red-contrib-mqtt`
-- `node-red-contrib-ui-led` *(optional)*
+Gold Armor
 
----
+Bow Kit (includes bow + 360 arrows + strength effect)
 
-## 🔧 Installation & Einrichtung
+PVP Kit (golden apple, iron sword, netherite boots)
 
-### 1. Node-RED installieren
+Special Features:
 
-```bash
-npm install -g --unsafe-perm node-red
-2. Node-RED starten
-bash
-Kopieren
-Bearbeiten
-node-red
-3. Dashboard & Flow
-Öffne Node-RED unter: http://localhost:1880
+Kits are immediately equipped on the player
 
-Importiere den Flow: Menu → Import → Flow-JSON einfügen
+Items are given with small delays to prevent command flooding
 
-Öffne das Dashboard: http://localhost:1880/ui
+Visual feedback for each command execution
 
-4. Konfiguration
-Passe folgende Nodes im Flow an:
+Inventory Visualization
+Tracks items in player's hotbar (first 9 slots)
 
-rcon-Node: IP, Port, Passwort deines Minecraft-Servers
+Each slot corresponds to an LED with color matching the item type
 
-mqtt-broker: Adresse deines Brokers (z. B. mqtt://localhost)
+Comprehensive item color database for accurate representation
 
-LED-Ziel-Topic: z. B. led/rgb
+Automatic detection of unknown items with warning system
 
-🧠 Funktionsweise
-Spielerliste abrufen
-Automatisch alle 10 Sekunden
+Installation
+Prerequisites
+Node-RED instance
 
-Dropdown zur Spielerwahl im Dashboard
+Minecraft server with RCON enabled
 
-Effekte überwachen
-Effekte werden alle 5 Sekunden abgefragt
+node-red-dashboard and node-red-contrib-rcon packages installed
 
-Der erste erkannte Effekt bestimmt die RGB-Farbe
+Setup
+Import the flow into your Node-RED instance
 
-MQTT-Ausgabe
-RGB-Wert wird an MQTT-Topic z. B. led/rgb gesendet
+Configure the RCON connection:
 
-LED-Controller (ESP32, Tasmota etc.) zeigt die entsprechende Farbe
+Update server IP in the serverconfig nodes
 
-Entity-Modus
-Das Dashboard erlaubt das Spawnen von Mobs mit Effekten
+Set correct RCON port (default: 25575)
 
-Zufallsmodus
-Button im Dashboard setzt zufällige Herzanzahl auf einen Spieler
+Enter your RCON password
 
-🎨 Effektfarben (Beispiel)
-Effekt	RGB-Farbe
-Feuer	255, 69, 0
-Gift	0, 255, 0
-Eis	173, 216, 230
-Blutung	139, 0, 0
-Regeneration	64, 224, 208
-Stärke	0, 0, 255
+(Optional) Configure MQTT if using LED visualization:
 
-🔧 Die Farben kannst du im Function-Node selbst anpassen!
+Set MQTT broker details in the mqtt-broker node
 
-🛠️ Hardware-Beispiel
-Komponente	Beispiel
-LED-Controller	ESP32 mit MQTT-Firmware (ESPHome, Tasmota)
-LED-Streifen	WS2812b oder kompatible
-MQTT-Broker	Mosquitto lokal oder extern
-Steuerung	Raspberry Pi, PC oder Docker-Container
+Ensure topic matches your LED controller
+
+Usage
+Player Selection
+The system automatically polls for online players every 10 seconds
+
+Select a player from the dropdown menu
+
+All subsequent commands will apply to this player
+
+Armor Kits
+Click any armor kit button
+
+The system will:
+
+Give all pieces of the armor set
+
+Automatically equip each piece
+
+Provide visual feedback in the debug panel
+
+Inventory Tracking
+Click "Inventar Check" button
+
+The system will:
+
+Query the player's inventory
+
+Analyze hotbar items
+
+Map each slot to an LED color
+
+Publish colors via MQTT (if configured)
+
+Technical Details
+Flow Structure
+Player Management Section:
+
+Periodic player list updates
+
+Player selection storage
+
+Inventory inspection commands
+
+Kit Delivery System:
+
+Button triggers → Player verification → Item generation → RCON execution
+
+Built-in delays between commands (300ms)
+
+Auto-equip functionality using /item replace commands
+
+LED Visualization:
+
+Comprehensive item color database
+
+Slot mapping system
+
+MQTT output for hardware integration
+
+Customization
+Change Command Delays: Modify the timeout values in the kit functions
+
+Add New Kits: Duplicate existing kit flows and update item lists
+
+Adjust LED Colors: Edit the itemColors object in the "Hotbar-Item Analyse" function
+
+Troubleshooting
+Common Issues
+Commands not executing:
+
+Verify RCON connection details
+
+Check server logs for command errors
+
+Ensure selected player is online
+
+LEDs not updating:
+
+Confirm MQTT broker connection
+
+Check topic matches your controller
+
+Verify item color definitions
+
+Unknown items in inventory:
+
+The system will log unknown items - add their colors to the itemColors object
+
+Roadmap
+Add more kit variations
+
+Implement player teleportation features
+
+Add server performance monitoring
+
+Create mobile-responsive dashboard layout
+
+License
+This project is open-source and available under the MIT License.
+
+
 
 
 
