@@ -1193,5 +1193,24 @@
         "x": 1950,
         "y": 1600,
         "wires": []
+    },
+    {
+        "id": "206c8b5180787118",
+        "type": "inject",
+        "z": "6945436b23baffe0",
+        "name": "Auto Inventar Check",
+        "props": [],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "topic": "",
+        "x": 740,
+        "y": 1720,
+        "wires": [
+            [
+                "d02ed7b0f053b843"
+            ]
+        ]
     }
 ]
