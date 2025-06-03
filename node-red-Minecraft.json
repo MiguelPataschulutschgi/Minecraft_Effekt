@@ -675,7 +675,7 @@
         "topic": "",
         "topicType": "str",
         "x": 60,
-        "y": 360,
+        "y": 240,
         "wires": [
             [
                 "441ed5bc1c9eede7"
@@ -687,7 +687,7 @@
         "type": "function",
         "z": "6945436b23baffe0",
         "name": "function 13",
-        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Items: Bogen und Pfeile\nlet items = [\n    { name: \"bow\", count: 1 },\n    { name: \"arrow\", count: 360 }\n];\n\n// Für jedes Item eine Nachricht senden (mit kleinem Delay)\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300);\n});\n\n// Stärke-Effekt-Befehl etwas später senden, damit Items vorher gegeben wurden\nsetTimeout(() => {\n    node.send({\n        payload: `/effect give ${player} minecraft:strength 300 0 true`\n    });\n}, items.length * 300 + 100);\n\nreturn null; // Weil node.send() manuell genutzt wird\n\n\n\n\n",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Items: Bogen und Pfeile\nlet items = [\n    { name: \"bow\", count: 1 },\n    { name: \"arrow\", count: 360 }\n];\n\n// Für jedes Item eine Nachricht senden (mit kleinem Delay)\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300);\n});\n\nreturn null;\n\n\n\n\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
@@ -695,10 +695,10 @@
         "finalize": "",
         "libs": [],
         "x": 490,
-        "y": 360,
+        "y": 240,
         "wires": [
             [
-                "b9a98206f07f40e4"
+                "8d247b2c5446b7dc"
             ]
         ]
     },
@@ -714,8 +714,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 820,
-        "y": 360,
+        "x": 1100,
+        "y": 320,
         "wires": []
     },
     {
@@ -738,8 +738,8 @@
         "payloadType": "str",
         "topic": "",
         "topicType": "str",
-        "x": 60,
-        "y": 300,
+        "x": 180,
+        "y": 140,
         "wires": [
             [
                 "f0cdc5c4e427cd08"
@@ -758,11 +758,12 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 280,
-        "y": 300,
+        "x": 400,
+        "y": 140,
         "wires": [
             [
-                "211dd5d130aed038"
+                "211dd5d130aed038",
+                "0e9aadf8a95589a9"
             ]
         ]
     },
@@ -771,15 +772,15 @@
         "type": "function",
         "z": "6945436b23baffe0",
         "name": "function 15",
-        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Liste der Items mit Namen und Menge\nlet items = [\n    { name: \"golden_apple\", count: 1 },\n    { name: \"iron_sword\", count: 1 },\n    { name: \"netherite_boots\", count: 1 }\n];\n\n// Für jedes Item eine Nachricht senden, mit Verzögerung\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300); // 300ms Abstand zwischen den Befehlen\n});\n\nreturn null;\n",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Liste der Items zum Droppen\nlet items = [\n    { name: \"golden_apple\", count: 1 },\n    { name: \"iron_sword\", count: 1 }\n];\n\n// Items mit Delay geben\nitems.forEach((item, index) => {\n    setTimeout(() => {\n        node.send({\n            payload: `${item.name} ${item.count}`,\n            action: \"give\",\n            target: player\n        });\n    }, index * 300);\n});\n\nreturn null;\n\n",
         "outputs": 1,
         "timeout": 0,
         "noerr": 0,
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 460,
-        "y": 300,
+        "x": 580,
+        "y": 140,
         "wires": [
             [
                 "07e2d59b379b4995"
@@ -794,8 +795,8 @@
         "server": "c4d23514d31ad45d",
         "action": "give",
         "gamemode": "survival",
-        "x": 660,
-        "y": 300,
+        "x": 840,
+        "y": 140,
         "wires": [
             [
                 "c8ad802eecad5a84"
@@ -814,8 +815,8 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 940,
-        "y": 300,
+        "x": 1060,
+        "y": 140,
         "wires": []
     },
     {
@@ -1043,21 +1044,6 @@
         ]
     },
     {
-        "id": "b9a98206f07f40e4",
-        "type": "rcon",
-        "z": "6945436b23baffe0",
-        "name": "",
-        "server": "c4d23514d31ad45d",
-        "command": "",
-        "x": 650,
-        "y": 360,
-        "wires": [
-            [
-                "763c29a827f5dc69"
-            ]
-        ]
-    },
-    {
         "id": "441ed5bc1c9eede7",
         "type": "function",
         "z": "6945436b23baffe0",
@@ -1070,10 +1056,11 @@
         "finalize": "",
         "libs": [],
         "x": 290,
-        "y": 360,
+        "y": 240,
         "wires": [
             [
-                "68e12c37d9c6e9f0"
+                "68e12c37d9c6e9f0",
+                "42e2c8c70979dafe"
             ]
         ]
     },
@@ -1089,8 +1076,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1220,
-        "y": 1760,
+        "x": 640,
+        "y": 980,
         "wires": [
             [
                 "b918e0d2f944791b"
@@ -1104,8 +1091,8 @@
         "name": "RCON senden",
         "server": "c4d23514d31ad45d",
         "command": "",
-        "x": 1420,
-        "y": 1760,
+        "x": 840,
+        "y": 980,
         "wires": [
             [
                 "df054704f8643c5f"
@@ -1124,8 +1111,8 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 1640,
-        "y": 1780,
+        "x": 1060,
+        "y": 1000,
         "wires": [
             [
                 "4ceb9872fa4fc4a5",
@@ -1144,8 +1131,8 @@
         "tostatus": false,
         "complete": "payload",
         "targetType": "msg",
-        "x": 1910,
-        "y": 1820,
+        "x": 1330,
+        "y": 1040,
         "wires": []
     },
     {
@@ -1168,8 +1155,8 @@
         "payloadType": "str",
         "topic": "",
         "topicType": "str",
-        "x": 740,
-        "y": 1760,
+        "x": 160,
+        "y": 980,
         "wires": [
             [
                 "d02ed7b0f053b843"
@@ -1190,8 +1177,8 @@
         "correl": "",
         "expiry": "",
         "broker": "2cb4c582896ebc60",
-        "x": 1950,
-        "y": 1600,
+        "x": 1370,
+        "y": 820,
         "wires": []
     },
     {
@@ -1200,16 +1187,102 @@
         "z": "6945436b23baffe0",
         "name": "Auto Inventar Check",
         "props": [],
-        "repeat": "5",
+        "repeat": "20",
         "crontab": "",
         "once": true,
-        "onceDelay": "1",
+        "onceDelay": "100",
         "topic": "",
-        "x": 740,
-        "y": 1720,
+        "x": 160,
+        "y": 940,
         "wires": [
             [
                 "d02ed7b0f053b843"
+            ]
+        ]
+    },
+    {
+        "id": "0f1385911a6c7a80",
+        "type": "rcon",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "fdd9776d718a368f",
+        "command": "",
+        "x": 890,
+        "y": 320,
+        "wires": [
+            [
+                "763c29a827f5dc69"
+            ]
+        ]
+    },
+    {
+        "id": "8d247b2c5446b7dc",
+        "type": "playermanage",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "c4d23514d31ad45d",
+        "action": "give",
+        "gamemode": "survival",
+        "x": 700,
+        "y": 240,
+        "wires": [
+            [
+                "763c29a827f5dc69"
+            ]
+        ]
+    },
+    {
+        "id": "42e2c8c70979dafe",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 1",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Stärke-Effekt senden\nsetTimeout(() => {\n    node.send({\n        payload: `/effect give ${player} minecraft:strength 300 0 true`\n    });\n}, 100); // Optionaler Delay, falls nötig\n\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 320,
+        "wires": [
+            [
+                "0f1385911a6c7a80"
+            ]
+        ]
+    },
+    {
+        "id": "0e9aadf8a95589a9",
+        "type": "function",
+        "z": "6945436b23baffe0",
+        "name": "function 2",
+        "func": "let player = flow.get(\"playername\");\nif (!player) {\n    node.warn(\"⚠️ Spielername nicht gesetzt (flow.playername).\");\n    return null;\n}\n\n// Ausrüstungsbefehl für die Füße\nsetTimeout(() => {\n    node.send({\n        payload: `/item replace entity ${player} armor.feet with minecraft:netherite_boots`\n    });\n}, 100); // Kleiner Delay\n\nreturn null;\n\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 200,
+        "wires": [
+            [
+                "3c63bc4d884a58a0"
+            ]
+        ]
+    },
+    {
+        "id": "3c63bc4d884a58a0",
+        "type": "rcon",
+        "z": "6945436b23baffe0",
+        "name": "",
+        "server": "c4d23514d31ad45d",
+        "command": "",
+        "x": 810,
+        "y": 200,
+        "wires": [
+            [
+                "c8ad802eecad5a84"
             ]
         ]
     }
