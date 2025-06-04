@@ -101,23 +101,7 @@ Verfügbare Kits:
 
 ---
 
-## ❗ Fehlerbehebung
 
-| Problem | Lösung |
-|--------|--------|
-| **Kommandos werden nicht ausgeführt** | RCON-Verbindung prüfen, Logs checken, Spieler online? |
-| **LEDs reagieren nicht** | MQTT-Verbindung prüfen, Topic korrekt? Farbcodes vorhanden? |
-| **Unbekannte Items** | Item wird geloggt – einfach zur Farbdatenbank (`itemColors`) hinzufügen |
-
----
-
-## 🧭 Roadmap
-- Weitere Kit-Varianten
-- Spieler-Teleport-Funktion
-- Server-Monitoring (TPS, RAM, etc.)
-- Mobiloptimiertes Dashboard-Design
-
----
 
 ## 📄 Lizenz
 
