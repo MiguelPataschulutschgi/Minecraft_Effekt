@@ -9,7 +9,7 @@ Ein leistungsstarkes Node-RED-Dashboard zur Verwaltung deines Minecraft-Servers 
 ### 🎮 Spielerverwaltung
 - Automatische Auflistung aller online Spieler (alle 10 Sekunden aktualisiert)
 - Dropdown-Auswahl speichert den gewählten Spieler für weitere Aktionen
-- Echtzeit-Inspektion von Spielerinventaren
+
 
 ### 🛡️ Rüstungs-Kits (mit Auto-Ausrüstung)
 Verfügbare Kits:
