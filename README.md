@@ -1,178 +1,121 @@
-Minecraft Server Manager - Node-RED Dashboard
-Overview
-This Node-RED project provides a web-based dashboard for managing a Minecraft server with the following features:
+🧱 Minecraft Server Manager – Node-RED Dashboard
+Ein leistungsstarkes Node-RED-Dashboard zur Verwaltung deines Minecraft-Servers in Echtzeit. Es bietet Funktionen wie Spielerverwaltung, Sofort-Kits, visuelle Inventaranalyse und serverweite RCON-Kommandos – alles über eine intuitive Web-Oberfläche.
 
-Player selection and management
+🚀 Funktionen im Überblick
+🎮 Spielerverwaltung
+Automatische Auflistung aller online Spieler (alle 10 Sekunden aktualisiert)
 
-Instant armor kits with auto-equip functionality
+Dropdown-Auswahl speichert den gewählten Spieler für weitere Aktionen
 
-Real-time inventory tracking with LED visualization
+Echtzeit-Inspektion von Spielerinventaren
 
-Server command execution via RCON
+🛡️ Rüstungs-Kits (mit Auto-Ausrüstung)
+Verfügbare Kits:
 
-Key Features
-Player Management
-Dropdown menu automatically lists all online players
+Diamant-Rüstung
 
-Selected player is stored for subsequent commands
+Leder-Rüstung
 
-Player inventory inspection system
+Kettenrüstung
 
-Armor Kits
-Available Kits:
+Gold-Rüstung
 
-Diamond Armor
+Bogen-Kit (Bogen, 360 Pfeile, Stärke-Effekt)
 
-Leather Armor
+PVP-Kit (Goldapfel, Eisenschwert, Netherite-Stiefel)
 
-Chainmail Armor
+Besonderheiten:
 
-Gold Armor
+Automatische Ausrüstung direkt nach Vergabe
 
-Bow Kit (includes bow + 360 arrows + strength effect)
+Verzögerungen zwischen Kommandos zur Vermeidung von Flooding
 
-PVP Kit (golden apple, iron sword, netherite boots)
+Visuelles Feedback im Debug-Panel
 
-Special Features:
+💡 Inventar-Visualisierung (LED-Anzeige)
+Analyse der Hotbar (Slots 0–8)
 
-Kits are immediately equipped on the player
+Jeder Slot wird farblich einer LED zugeordnet
 
-Items are given with small delays to prevent command flooding
+Farbdatenbank für Items zur realitätsnahen Darstellung
 
-Visual feedback for each command execution
+Warnsystem bei unbekannten Items
 
-Inventory Visualization
-Tracks items in player's hotbar (first 9 slots)
+⚙️ Installation & Setup
+Voraussetzungen
+Node-RED Instanz
 
-Each slot corresponds to an LED with color matching the item type
+Minecraft-Server mit aktiviertem RCON
 
-Comprehensive item color database for accurate representation
+Installierte Node-RED-Pakete:
 
-Automatic detection of unknown items with warning system
+node-red-dashboard
 
-Installation
-Prerequisites
-Node-RED instance
+node-red-contrib-rcon
 
-Minecraft server with RCON enabled
+Einrichtung
+Importiere den Flow in deine Node-RED-Instanz
 
-node-red-dashboard and node-red-contrib-rcon packages installed
+Konfiguriere die RCON-Verbindung:
 
-Setup
-Import the flow into your Node-RED instance
+IP-Adresse im serverconfig-Node setzen
 
-Configure the RCON connection:
+RCON-Port anpassen (Standard: 25575)
 
-Update server IP in the serverconfig nodes
+RCON-Passwort eintragen
 
-Set correct RCON port (default: 25575)
+(Optional) MQTT für LED-Anzeige konfigurieren:
 
-Enter your RCON password
+MQTT-Broker im mqtt-broker-Node einrichten
 
-(Optional) Configure MQTT if using LED visualization:
+Passenden Topic für dein LED-Setup wählen
 
-Set MQTT broker details in the mqtt-broker node
+🧑‍💻 Nutzung
+Spieler auswählen
+Online-Spieler werden automatisch aufgelistet
 
-Ensure topic matches your LED controller
+Auswahl eines Spielers im Dropdown-Menü
 
-Usage
-Player Selection
-The system automatically polls for online players every 10 seconds
+Alle Befehle wirken sich auf den gewählten Spieler aus
 
-Select a player from the dropdown menu
+Kits ausrüsten
+Klick auf einen Kit-Button vergibt automatisch alle Gegenstände
 
-All subsequent commands will apply to this player
+Rüstung wird direkt angelegt
 
-Armor Kits
-Click any armor kit button
+Fortschritt und Status erscheinen im Debug-Fenster
 
-The system will:
+Inventar prüfen
+Klick auf „Inventar Check“:
 
-Give all pieces of the armor set
+Spielerinventar wird analysiert
 
-Automatically equip each piece
+Hotbar-Slots werden LEDs zugewiesen
 
-Provide visual feedback in the debug panel
+Farben werden per MQTT (falls aktiviert) veröffentlicht
 
-Inventory Tracking
-Click "Inventar Check" button
+🧠 Technische Details
+Flow-Struktur
+Spielerverwaltung:
 
-The system will:
+Periodisches Abrufen & Speicherung des Spielers
 
-Query the player's inventory
+Inventar-Abfragen via RCON
 
-Analyze hotbar items
+Kit-System:
 
-Map each slot to an LED color
+Button-Trigger → Spielerprüfung → Item-Vergabe via RCON
 
-Publish colors via MQTT (if configured)
+300ms Delay zwischen Kommandos
 
-Technical Details
-Flow Structure
-Player Management Section:
+Auto-Ausrüstung per /item replace Befehl
 
-Periodic player list updates
+LED-Visualisierung:
 
-Player selection storage
+Farbdatenbank zur Slot-Erkennung
 
-Inventory inspection commands
+MQTT-Ausgabe zur Ansteuerung externer Hardware
 
-Kit Delivery System:
-
-Button triggers → Player verification → Item generation → RCON execution
-
-Built-in delays between commands (300ms)
-
-Auto-equip functionality using /item replace commands
-
-LED Visualization:
-
-Comprehensive item color database
-
-Slot mapping system
-
-MQTT output for hardware integration
-
-Customization
-Change Command Delays: Modify the timeout values in the kit functions
-
-Add New Kits: Duplicate existing kit flows and update item lists
-
-Adjust LED Colors: Edit the itemColors object in the "Hotbar-Item Analyse" function
-
-Troubleshooting
-Common Issues
-Commands not executing:
-
-Verify RCON connection details
-
-Check server logs for command errors
-
-Ensure selected player is online
-
-LEDs not updating:
-
-Confirm MQTT broker connection
-
-Check topic matches your controller
-
-Verify item color definitions
-
-Unknown items in inventory:
-
-The system will log unknown items - add their colors to the itemColors object
-
-Roadmap
-Add more kit variations
-
-Implement player teleportation features
-
-Add server performance monitoring
-
-Create mobile-responsive dashboard layout
-
-License
-This project is open-source and available under the MIT License.
 
 
 
